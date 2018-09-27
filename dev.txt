@@ -1,0 +1,33 @@
+@app.route('/dbtest')
+def dbtest():
+    ver = getversion()
+    return str(ver)
+
+import pymysql as Mysqldb
+def getversion():
+    # 打开数据库连接
+    db = Mysqldb.connect("localhost", "root", "123456", "db_test", charset='utf8' )
+    # 使用cursor()方法获取操作游标 
+    cursor = db.cursor()
+    # 使用execute方法执行SQL语句
+    cursor.execute("SELECT VERSION()")
+    # 使用 fetchone() 方法获取一条数据
+    data = cursor.fetchone()
+    # 关闭数据库连接
+    db.close()
+    return data
+
+@app.route('/series')
+def series():
+    seriesop()
+    return "完成"
+
+from pandas import Series, DataFrame
+import pandas as pd
+from sqlalchemy import create_engine
+engine = create_engine('mysql+pymysql://root:123456@localhost:3306/db_test')
+def seriesop():
+    a = pd.Series(['2018-09-26','2018-09-27','2018-09-28'])
+    b = pd.Series([1,-1,1])
+    c = pd.DataFrame({'Date':a, 'sig':b})
+    c.to_sql('series', con=engine, chunksize=1000, if_exists='replace', index=None)
