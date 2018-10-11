@@ -31,3 +31,28 @@ def seriesop():
     b = pd.Series([1,-1,1])
     c = pd.DataFrame({'Date':a, 'sig':b})
     c.to_sql('series', con=engine, chunksize=1000, if_exists='replace', index=None)
+
+#switch case
+def m1_func(code):
+    return code
+
+def m2_func(code):
+    return code
+
+def cacl(type, code):
+    return {
+        'band1': m1_func(code),
+        'band2': m2_func(code)
+    }.get(type, None) #default return None
+
+res = cacl('band1', '111')
+print(res)
+res = cacl('band2', '222')
+print(res)
+res = cacl('','None')
+print(res)
+
+#threading
+
+
+
