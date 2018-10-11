@@ -1,11 +1,12 @@
 #coding=utf-8
+import sys
+import imp
+imp.reload(sys)
 from datetime import datetime
 from flask import render_template
 from starter import app
 import os
-import sys
-import imp
-imp.reload(sys)
+
 
 # __file__ refers to the file settings.py 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))   # refers to application_top
