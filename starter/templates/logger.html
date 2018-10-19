@@ -53,8 +53,8 @@
         {
         	  var string = content;  
             try{  
-                string=string.replace("买入","<span style='color:red;'><strong>买入</strong></span>")  
-                string=string.replace("卖出","<span style='color:green;'><strong>卖出</strong></span>");  
+                string=string.replaceAll("买入","<span style='color:red;'><strong>买入</strong></span>")  
+                string=string.replaceAll("卖出","<span style='color:green;'><strong>卖出</strong></span>");  
             }catch(e) {  
                 alert(e.message);  
             }  
