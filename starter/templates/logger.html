@@ -20,6 +20,13 @@
     <div style="display:none;" id="hiddenContent">{{ content }}</div>
     <div class="content"></div>
 
+    <script language="javascript" type="text/javascript">
+        String.prototype.replaceAll = function (FindText, RepText) {
+            regExp = new RegExp(FindText, "g");
+            return this.replace(regExp, RepText);
+        }
+    </script>
+
     <script type="text/javascript">
         var content = $("#hiddenContent").text();
         if(content.indexOf("Error：") > -1){
@@ -41,11 +48,6 @@
                 alert(e.message);  
             }  
             return string;  
-        }
-
-        String.prototype.replaceAll = function (FindText, RepText) {
-            regExp = new RegExp(FindText, "g");
-            return this.replace(regExp, RepText);
         }
 
         //替换signal
