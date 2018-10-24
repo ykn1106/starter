@@ -53,5 +53,5 @@ def readFile(filepath):
         print(content)
     finally:
         print("操作完毕.")
-        # f.close()
+        f.close()
         return content
